@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".activity.country.AddCountryActivity">
+        </activity>
+        <activity android:name=".activity.country.CountryActivity">
+        </activity>
+        <provider
+                android:name=".data.MyTravelsProvider"
+                android:authorities="br.com.iq.mytravels.mytravelsprovider"
+                android:exported="false" />
     </application>
 
 </manifest>
