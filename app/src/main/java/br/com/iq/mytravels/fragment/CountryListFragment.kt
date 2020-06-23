@@ -2,99 +2,70 @@ package br.com.iq.mytravels.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import br.com.iq.mytravels.MyTravelsApplication
 import br.com.iq.mytravels.R
+import br.com.iq.mytravels.adapter.CountryAdapter
+import br.com.iq.mytravels.domain.Country
 
 import br.com.iq.mytravels.fragment.dummy.DummyContent
 import br.com.iq.mytravels.fragment.dummy.DummyContent.DummyItem
+import java.util.*
 
 /**
  * A fragment representing a list of Items.
  * Activities containing this fragment MUST implement the
  * [CountryListFragment.OnListFragmentInteractionListener] interface.
  */
-class CountryListFragment : Fragment() {
+class CountryListFragment : BaseFragment() {
 
-    // TODO: Customize parameters
-    private var columnCount = 1
-
-    private var listener: OnListFragmentInteractionListener? = null
+    private var countries: List<Country> = ArrayList()
+    var rvCountry: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
-        }
+        getCountries()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_item_list, container, false)
 
-        // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = MyItemRecyclerViewAdapter(DummyContent.ITEMS, listener)
-            }
-        }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_country_list, container, false)
         return view
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnListFragmentInteractionListener) {
-            listener = context
-        } else {
-            throw RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener")
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        rvCountry = view?.findViewById(R.id.rvCountry)
+        rvCountry?.layoutManager = LinearLayoutManager(activity)
+        rvCountry?.itemAnimator = DefaultItemAnimator()
+        rvCountry?.setHasFixedSize(true)
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        listener = null
+    override fun onResume(){
+        super.onResume()
+        setupAdapter(countries)
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson
-     * [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
-    interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyItem?)
+    private fun setupAdapter(list: List<Country>){
+        rvCountry?.adapter = CountryAdapter(countries) { onClickItem(it) }
     }
 
-    companion object {
+    private fun onClickItem(country: Country) {
 
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
-
-        // TODO: Customize parameter initialization
-        @JvmStatic
-        fun newInstance(columnCount: Int) =
-            CountryListFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_COLUMN_COUNT, columnCount)
-                }
-            }
     }
+
+
+    private fun getCountries(){
+        countries = MyTravelsApplication.countries
+    }
+
+
 }

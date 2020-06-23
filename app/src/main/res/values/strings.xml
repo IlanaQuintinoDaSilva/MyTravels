@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyTravels</string>
+    <string name="app_name">Places To Visit</string>
     <string name="country">Country</string>
     <string name="add">Add</string>
 </resources>
