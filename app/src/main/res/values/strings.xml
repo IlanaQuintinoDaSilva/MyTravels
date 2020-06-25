@@ -7,4 +7,6 @@
     <string name="countries">Countries</string>
     <string name="cities">Cities</string>
     <string name="backup">Backup</string>
+    <string name="places">Places</string>
+    <string name="travels">Travels</string>
 </resources>

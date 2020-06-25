@@ -2,14 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     <group android:checkableBehavior="single">
         <item
-                android:id="@+id/nav_groups"
-                android:title="@string/groups" />
+                android:id="@+id/nav_travels"
+                android:title="@string/travels" />
         <item
                 android:id="@+id/nav_countries"
                 android:title="@string/countries" />
         <item
                 android:id="@+id/nav_cities"
                 android:title="@string/cities" />
+        <item
+                android:id="@+id/nav_places"
+                android:title="@string/places" />
         <item
                 android:id="@+id/nav_backup"
                 android:title="@string/backup" />
