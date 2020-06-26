@@ -12,4 +12,5 @@
     <color name="control_highlight">#BDBDBD</color>
     <!--Colors-->
     <color name="white">#FFFFFF</color>
+    <color name="yellow">#FFF200</color>
 </resources>
