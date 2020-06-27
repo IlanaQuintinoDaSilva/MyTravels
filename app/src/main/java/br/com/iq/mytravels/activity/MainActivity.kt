@@ -1,17 +1,31 @@
-package br.com.iq.mytravels
+package br.com.iq.mytravels.activity
 
-import android.support.v7.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.widget.DrawerLayout
+import br.com.iq.mytravels.MyTravelsApplication
+import br.com.iq.mytravels.R
+import br.com.iq.mytravels.activity.country.AddCountryActivity
+import br.com.iq.mytravels.activity.country.CountryActivity
+import br.com.iq.mytravels.data.DatabaseHelper
+import br.com.iq.mytravels.domain.api.CountryService
+import br.com.iq.mytravels.extensions.addFragment
+import br.com.iq.mytravels.fragment.CountryListFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var mDrawerLayout: DrawerLayout
+    private var countryService = CountryService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        feedCountriesData()
         setContentView(R.layout.activity_main)
+
+        if(savedInstanceState == null) {
+            addFragment(R.id.container_main, CountryListFragment())
+        }
 
         mDrawerLayout = findViewById(R.id.drawer_layout)
 
@@ -29,8 +43,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_countries ->{
                     if(savedInstanceState == null){
-                        /*val intent = Intent(context, BacklogActivity::class.java)
-                        startActivity(intent)*/
+                        val intent = Intent(context, AddCountryActivity::class.java)
+                        startActivity(intent)
                     }
                 }
                 R.id.nav_cities ->{
@@ -54,5 +68,13 @@ class MainActivity : AppCompatActivity() {
 
             true
         }
+
+    }
+
+    private fun feedCountriesData(){
+        val helper = DatabaseHelper(this)
+        MyTravelsApplication.dbHelper = helper
+        MyTravelsApplication.countries = countryService.getCountries(helper)
+
     }
 }
