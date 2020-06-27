@@ -13,6 +13,7 @@ import br.com.iq.mytravels.domain.api.CountryService
 import br.com.iq.mytravels.extensions.addFragment
 import br.com.iq.mytravels.fragment.AddCountryFragment
 import br.com.iq.mytravels.fragment.CountryListFragment
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
@@ -28,6 +29,11 @@ class MainActivity : BaseActivity() {
             addFragment(R.id.container_main, CountryListFragment())
         }
 
+        btNew.setOnClickListener {
+            val intent = Intent(context, AddCountryActivity::class.java)
+            startActivity(intent)
+        }
+
         mDrawerLayout = findViewById(R.id.drawer_layout)
 
         val navigationView: NavigationView = findViewById(R.id.nav_view)
@@ -36,22 +42,21 @@ class MainActivity : BaseActivity() {
             menuItem.isChecked = true
 
             when (menuItem.itemId) {
-                R.id.nav_travels ->{
+/*                R.id.nav_travels ->{
                     if(savedInstanceState == null){
-                        /*setToolBarTitle(getString(R.string.actual_sprint))
-                        addFragment(R.id.container, ToDoListFragment())*/
+                        *//*setToolBarTitle(getString(R.string.actual_sprint))
+                        addFragment(R.id.container, ToDoListFragment())*//*
                     }
-                }
+                }*/
                 R.id.nav_countries ->{
                     if(savedInstanceState == null){
-                        val intent = Intent(context, AddCountryActivity::class.java)
-                        startActivity(intent)
+                        addFragment(R.id.container_main, CountryListFragment())
                     }
                 }
-                R.id.nav_home_city_nearby ->{
-                    /*val intent = Intent(context, CategoryActivity::class.java)
-                    startActivity(intent)*/
-                }
+/*                R.id.nav_home_city_nearby ->{
+                    *//*val intent = Intent(context, CategoryActivity::class.java)
+                    startActivity(intent)*//*
+                }*/
             }
 
             // close drawer when item is tapped
