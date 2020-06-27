@@ -1,6 +1,7 @@
 package br.com.iq.mytravels.fragment
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.GridLayoutManager
@@ -11,11 +12,13 @@ import android.view.View
 import android.view.ViewGroup
 import br.com.iq.mytravels.MyTravelsApplication
 import br.com.iq.mytravels.R
+import br.com.iq.mytravels.activity.country.AddCountryActivity
 import br.com.iq.mytravels.adapter.CountryAdapter
 import br.com.iq.mytravels.domain.Country
 
 import br.com.iq.mytravels.fragment.dummy.DummyContent
 import br.com.iq.mytravels.fragment.dummy.DummyContent.DummyItem
+import kotlinx.android.synthetic.main.fragment_country_list.*
 import java.util.*
 
 
@@ -28,12 +31,19 @@ class CountryListFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
 
         getCountries()
+
     }
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_country_list, container, false)
+
+        /*btNewCountry.setOnClickListener {
+            val intent = Intent(context, AddCountryActivity::class.java)
+            startActivity(intent)
+        }*/
+
         return view
     }
 
