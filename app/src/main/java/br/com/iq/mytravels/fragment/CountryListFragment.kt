@@ -18,11 +18,7 @@ import br.com.iq.mytravels.fragment.dummy.DummyContent
 import br.com.iq.mytravels.fragment.dummy.DummyContent.DummyItem
 import java.util.*
 
-/**
- * A fragment representing a list of Items.
- * Activities containing this fragment MUST implement the
- * [CountryListFragment.OnListFragmentInteractionListener] interface.
- */
+
 class CountryListFragment : BaseFragment() {
 
     private var countries: List<Country> = ArrayList()

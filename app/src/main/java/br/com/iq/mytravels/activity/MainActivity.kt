@@ -11,6 +11,7 @@ import br.com.iq.mytravels.activity.country.CountryActivity
 import br.com.iq.mytravels.data.DatabaseHelper
 import br.com.iq.mytravels.domain.api.CountryService
 import br.com.iq.mytravels.extensions.addFragment
+import br.com.iq.mytravels.fragment.AddCountryFragment
 import br.com.iq.mytravels.fragment.CountryListFragment
 
 class MainActivity : BaseActivity() {
@@ -47,16 +48,9 @@ class MainActivity : BaseActivity() {
                         startActivity(intent)
                     }
                 }
-                R.id.nav_cities ->{
+                R.id.nav_home_city_nearby ->{
                     /*val intent = Intent(context, CategoryActivity::class.java)
                     startActivity(intent)*/
-                }
-                R.id.nav_places ->{
-                    /*val intent = Intent(context, CloudBackup::class.java)
-                    startActivity(intent)*/
-                }
-                R.id.nav_backup ->{
-
                 }
             }
 
