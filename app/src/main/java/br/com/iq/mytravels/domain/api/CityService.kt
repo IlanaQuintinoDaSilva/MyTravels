@@ -69,6 +69,8 @@ class CityService : ContentProvider(){
         val selectionArgs = arrayOf(isDone)
         val c = db.query(MyTravelsContract.CitiesEntry.TABLE_NAME,
             projection, selection, selectionArgs, null, null, null)
+        val i = c.count
+        Log.d("Cities Count", i.toString())
         while (c.moveToNext()) {
             var ct = City()
             ct.name = c.getString(0)

@@ -14,4 +14,5 @@ object MyTravelsApplication {
     var countries: List<Country> = ArrayList()
     var launched: Boolean = false
     var dbHelper: DatabaseHelper? = null
+    var pageSelection: Int = 0
 }

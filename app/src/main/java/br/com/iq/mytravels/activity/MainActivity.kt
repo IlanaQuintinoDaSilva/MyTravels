@@ -30,13 +30,28 @@ class MainActivity : BaseActivity() {
         getCities()
         setContentView(R.layout.activity_main)
 
-        if(savedInstanceState == null) {
+//        if(savedInstanceState == null) {
+
+        if (MyTravelsApplication.pageSelection == 0){
             addFragment(R.id.container_main, CountryListFragment())
         }
 
+        if (MyTravelsApplication.pageSelection == 1){
+            addFragment(R.id.container_main, CityListFragment())
+        }
+
+//        }
+
         btNew.setOnClickListener {
-            val intent = Intent(context, AddCountryActivity::class.java)
-            startActivity(intent)
+            if (MyTravelsApplication.pageSelection == 0){
+                val intent = Intent(context, AddCountryActivity::class.java)
+                startActivity(intent)
+            }
+            if (MyTravelsApplication.pageSelection == 1){
+                val intent = Intent(context, AddCityActivity::class.java)
+                startActivity(intent)
+            }
+
         }
 
         mDrawerLayout = findViewById(R.id.drawer_layout)
@@ -55,14 +70,18 @@ class MainActivity : BaseActivity() {
                 }*/
                 R.id.nav_countries ->{
                     if(savedInstanceState == null){
+                        MyTravelsApplication.pageSelection = 0
                         addFragment(R.id.container_main, CountryListFragment())
                     }
                 }
                 R.id.nav_cities ->{
                     if(savedInstanceState == null){
 //                        addFragment(R.id.container_main, CityListFragment())
-                        val intent = Intent(context, AddCityActivity::class.java)
+                        MyTravelsApplication.pageSelection = 1
+                        val intent = Intent(context, MainActivity::class.java)
                         startActivity(intent)
+/*                        val intent = Intent(context, AddCityActivity::class.java)
+                        startActivity(intent)*/
                     }
                 }
 /*                R.id.nav_home_city_nearby ->{
