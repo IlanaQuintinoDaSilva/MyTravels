@@ -26,13 +26,13 @@
                     android:textAlignment="center"
                     android:textSize="16dp"
                     android:text="Swipe right to see the menu."/>
-            <LinearLayout
+            <FrameLayout
                     android:id="@+id/container_main"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_weight="2"
-                    android:gravity="center"></LinearLayout>
+                    android:gravity="center"></FrameLayout>
             <android.support.design.widget.FloatingActionButton
                     android:id="@+id/btNew"
                     android:layout_width="wrap_content"

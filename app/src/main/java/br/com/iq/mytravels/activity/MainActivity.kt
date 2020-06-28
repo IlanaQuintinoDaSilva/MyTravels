@@ -71,16 +71,16 @@ class MainActivity : BaseActivity() {
                 R.id.nav_countries ->{
                     if(savedInstanceState == null){
                         MyTravelsApplication.pageSelection = 0
-                        reloadActivity()
-//                        addFragment(R.id.container_main, CountryListFragment())
+//                        reloadActivity()
+                        addFragment(R.id.container_main, CountryListFragment())
                     }
                 }
                 R.id.nav_cities ->{
                     if(savedInstanceState == null){
                       MyTravelsApplication.pageSelection = 1
-//                        addFragment(R.id.container_main, CityListFragment())
+                        addFragment(R.id.container_main, CityListFragment())
 
-                        reloadActivity()
+//                        reloadActivity()
 /*                        val intent = Intent(context, AddCityActivity::class.java)
                         startActivity(intent)*/
                     }
