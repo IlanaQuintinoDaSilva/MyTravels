@@ -31,6 +31,7 @@ class CityAdapter(
         with(itemView){
             tCityId.text = city.id.toString()
             tCityName.text = city.name
+            tCtCountry.text = city.country
 
         }
         holder.itemView.setOnClickListener{onClick(city)}

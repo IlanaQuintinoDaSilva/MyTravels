@@ -23,13 +23,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:visibility="invisible">
+                    android:visibility="gone">
                 <TextView
                         android:id="@+id/tCityId"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="0dp"
                         android:textSize="20dp"
                         android:textStyle="bold"/>
             </FrameLayout>
