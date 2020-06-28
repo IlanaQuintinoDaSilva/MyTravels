@@ -71,15 +71,16 @@ class MainActivity : BaseActivity() {
                 R.id.nav_countries ->{
                     if(savedInstanceState == null){
                         MyTravelsApplication.pageSelection = 0
-                        addFragment(R.id.container_main, CountryListFragment())
+                        reloadActivity()
+//                        addFragment(R.id.container_main, CountryListFragment())
                     }
                 }
                 R.id.nav_cities ->{
                     if(savedInstanceState == null){
+                      MyTravelsApplication.pageSelection = 1
 //                        addFragment(R.id.container_main, CityListFragment())
-                        MyTravelsApplication.pageSelection = 1
-                        val intent = Intent(context, MainActivity::class.java)
-                        startActivity(intent)
+
+                        reloadActivity()
 /*                        val intent = Intent(context, AddCityActivity::class.java)
                         startActivity(intent)*/
                     }
@@ -113,5 +114,10 @@ class MainActivity : BaseActivity() {
         MyTravelsApplication.dbHelper = helper
         MyTravelsApplication.cities = cityService.getCities(helper,"")
 
+    }
+
+    private fun reloadActivity(){
+        val intent = Intent(context, MainActivity::class.java)
+        startActivity(intent)
     }
 }
