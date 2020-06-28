@@ -7,6 +7,9 @@
         <item
                 android:id="@+id/nav_countries"
                 android:title="@string/countries" />
+        <item
+                android:id="@+id/nav_cities"
+                android:title="@string/cities" />
 <!--        <item
                 android:id="@+id/nav_home_city_nearby"
                 android:title="@string/home_city_nearby" />-->
