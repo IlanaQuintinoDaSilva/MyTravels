@@ -17,6 +17,7 @@ import android.support.v7.widget.Toolbar
 import br.com.iq.mytravels.MyTravelsApplication
 import br.com.iq.mytravels.R
 import br.com.iq.mytravels.activity.country.AddCountryActivity
+import br.com.iq.mytravels.activity.ui.city.AddCityActivity
 import br.com.iq.mytravels.data.DatabaseHelper
 import br.com.iq.mytravels.domain.api.CountryService
 
@@ -30,12 +31,17 @@ class NavMainActivity : BaseActivity() {
         setContentView(R.layout.activity_nav_main)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-//        getCountries()
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
-            val intent = Intent(context, AddCountryActivity::class.java)
-            startActivity(intent)
+            if (MyTravelsApplication.pageSelection == 0){
+                val intent = Intent(context, AddCountryActivity::class.java)
+                startActivity(intent)
+            }
+            if (MyTravelsApplication.pageSelection == 1){
+                val intent = Intent(context, AddCityActivity::class.java)
+                startActivity(intent)
+            }
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -62,10 +68,4 @@ class NavMainActivity : BaseActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    private fun getCountries(){
-        val helper = DatabaseHelper(this)
-        MyTravelsApplication.dbHelper = helper
-        MyTravelsApplication.countries = countryService.getCountries(helper)
-
-    }
 }

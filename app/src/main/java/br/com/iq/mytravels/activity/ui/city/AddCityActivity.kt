@@ -11,6 +11,7 @@ import br.com.iq.mytravels.MyTravelsApplication
 import br.com.iq.mytravels.R
 import br.com.iq.mytravels.activity.BaseActivity
 import br.com.iq.mytravels.activity.MainActivity
+import br.com.iq.mytravels.activity.NavMainActivity
 import br.com.iq.mytravels.data.DatabaseHelper
 import br.com.iq.mytravels.domain.Country
 import br.com.iq.mytravels.domain.api.CityService
@@ -63,7 +64,7 @@ class AddCityActivity : BaseActivity() {
         btAddCity.setOnClickListener{
             city = etCity.text.toString()
             addCity(city, country,"")
-            val intent = Intent(context, MainActivity::class.java)
+            val intent = Intent(context, NavMainActivity::class.java)
             startActivity(intent)
         }
     }

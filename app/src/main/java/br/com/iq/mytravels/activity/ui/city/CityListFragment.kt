@@ -10,7 +10,9 @@ import android.view.ViewGroup
 import br.com.iq.mytravels.MyTravelsApplication
 import br.com.iq.mytravels.R
 import br.com.iq.mytravels.adapter.CityAdapter
+import br.com.iq.mytravels.data.DatabaseHelper
 import br.com.iq.mytravels.domain.City
+import br.com.iq.mytravels.domain.api.CityService
 import br.com.iq.mytravels.fragment.BaseFragment
 
 import java.util.*
@@ -19,10 +21,14 @@ import java.util.*
 class CityListFragment : BaseFragment() {
 
     private var cities: List<City> = ArrayList()
+    private var cityService = CityService()
     var rvCity: RecyclerView? = null
+    private lateinit var helper: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        helper = DatabaseHelper(activity)
+        MyTravelsApplication.pageSelection = 1
 
     }
 
@@ -60,6 +66,8 @@ class CityListFragment : BaseFragment() {
 
 
     private fun getCities(){
+        MyTravelsApplication.dbHelper = helper
+        MyTravelsApplication.cities = cityService.getCities(helper,"0")
         cities = MyTravelsApplication.cities
     }
 

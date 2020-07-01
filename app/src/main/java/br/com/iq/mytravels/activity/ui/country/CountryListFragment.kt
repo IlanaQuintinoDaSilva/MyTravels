@@ -35,15 +35,13 @@ class CountryListFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_country_list, container, false)
-//        getCountries()
 
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        MyTravelsApplication.pageSelection = 0
-//        getCountries()
+
         rvCountry = view?.findViewById(R.id.rvCountry)
         rvCountry?.layoutManager = LinearLayoutManager(activity)
         rvCountry?.itemAnimator = DefaultItemAnimator()
