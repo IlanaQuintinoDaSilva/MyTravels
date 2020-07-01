@@ -1,10 +1,7 @@
-package br.com.iq.mytravels.fragment
+package br.com.iq.mytravels.activity.ui.country
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -12,13 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import br.com.iq.mytravels.MyTravelsApplication
 import br.com.iq.mytravels.R
-import br.com.iq.mytravels.activity.country.AddCountryActivity
 import br.com.iq.mytravels.adapter.CountryAdapter
 import br.com.iq.mytravels.domain.Country
+import br.com.iq.mytravels.fragment.BaseFragment
 
-import br.com.iq.mytravels.fragment.dummy.DummyContent
-import br.com.iq.mytravels.fragment.dummy.DummyContent.DummyItem
-import kotlinx.android.synthetic.main.fragment_country_list.*
 import java.util.*
 
 

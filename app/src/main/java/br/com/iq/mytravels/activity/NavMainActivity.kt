@@ -1,5 +1,6 @@
 package br.com.iq.mytravels.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.support.design.widget.FloatingActionButton
@@ -13,11 +14,16 @@ import androidx.navigation.ui.setupWithNavController
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import br.com.iq.mytravels.MyTravelsApplication
 import br.com.iq.mytravels.R
+import br.com.iq.mytravels.activity.country.AddCountryActivity
+import br.com.iq.mytravels.data.DatabaseHelper
+import br.com.iq.mytravels.domain.api.CountryService
 
-class NavMainActivity : AppCompatActivity() {
+class NavMainActivity : BaseActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private var countryService = CountryService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,10 +31,14 @@ class NavMainActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
+        getCountries()
+
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+/*            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()*/
+            val intent = Intent(context, AddCountryActivity::class.java)
+            startActivity(intent)
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -37,7 +47,7 @@ class NavMainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_country, R.id.nav_city
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -53,5 +63,12 @@ class NavMainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    private fun getCountries(){
+        val helper = DatabaseHelper(this)
+        MyTravelsApplication.dbHelper = helper
+        MyTravelsApplication.countries = countryService.getCountries(helper)
+
     }
 }

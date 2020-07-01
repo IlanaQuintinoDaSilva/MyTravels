@@ -8,14 +8,12 @@ import br.com.iq.mytravels.MyTravelsApplication
 import br.com.iq.mytravels.R
 import br.com.iq.mytravels.activity.city.AddCityActivity
 import br.com.iq.mytravels.activity.country.AddCountryActivity
-import br.com.iq.mytravels.activity.country.CountryActivity
 import br.com.iq.mytravels.data.DatabaseHelper
 import br.com.iq.mytravels.domain.api.CityService
 import br.com.iq.mytravels.domain.api.CountryService
 import br.com.iq.mytravels.extensions.addFragment
-import br.com.iq.mytravels.fragment.AddCountryFragment
 import br.com.iq.mytravels.fragment.CityListFragment
-import br.com.iq.mytravels.fragment.CountryListFragment
+import br.com.iq.mytravels.activity.ui.country.CountryListFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
@@ -33,7 +31,9 @@ class MainActivity : BaseActivity() {
 //        if(savedInstanceState == null) {
 
         if (MyTravelsApplication.pageSelection == 0){
-            addFragment(R.id.container_main, CountryListFragment())
+            addFragment(R.id.container_main,
+                CountryListFragment()
+            )
         }
 
         if (MyTravelsApplication.pageSelection == 1){
@@ -72,7 +72,9 @@ class MainActivity : BaseActivity() {
                     if(savedInstanceState == null){
                         MyTravelsApplication.pageSelection = 0
 //                        reloadActivity()
-                        addFragment(R.id.container_main, CountryListFragment())
+                        addFragment(R.id.container_main,
+                            CountryListFragment()
+                        )
                     }
                 }
                 R.id.nav_cities ->{
