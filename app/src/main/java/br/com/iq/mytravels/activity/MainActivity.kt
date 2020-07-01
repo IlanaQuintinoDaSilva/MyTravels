@@ -6,13 +6,13 @@ import android.support.design.widget.NavigationView
 import android.support.v4.widget.DrawerLayout
 import br.com.iq.mytravels.MyTravelsApplication
 import br.com.iq.mytravels.R
-import br.com.iq.mytravels.activity.city.AddCityActivity
+import br.com.iq.mytravels.activity.ui.city.AddCityActivity
 import br.com.iq.mytravels.activity.country.AddCountryActivity
 import br.com.iq.mytravels.data.DatabaseHelper
 import br.com.iq.mytravels.domain.api.CityService
 import br.com.iq.mytravels.domain.api.CountryService
 import br.com.iq.mytravels.extensions.addFragment
-import br.com.iq.mytravels.fragment.CityListFragment
+import br.com.iq.mytravels.activity.ui.city.CityListFragment
 import br.com.iq.mytravels.activity.ui.country.CountryListFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -37,7 +37,9 @@ class MainActivity : BaseActivity() {
         }
 
         if (MyTravelsApplication.pageSelection == 1){
-            addFragment(R.id.container_main, CityListFragment())
+            addFragment(R.id.container_main,
+                CityListFragment()
+            )
         }
 
 //        }
@@ -80,7 +82,9 @@ class MainActivity : BaseActivity() {
                 R.id.nav_cities ->{
                     if(savedInstanceState == null){
                       MyTravelsApplication.pageSelection = 1
-                        addFragment(R.id.container_main, CityListFragment())
+                        addFragment(R.id.container_main,
+                            CityListFragment()
+                        )
 
 //                        reloadActivity()
 /*                        val intent = Intent(context, AddCityActivity::class.java)

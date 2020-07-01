@@ -23,7 +23,7 @@
         </activity>
         <activity android:name=".activity.country.AddCountryActivity" />
         <activity android:name=".activity.country.CountryActivity" />
-        <activity android:name=".activity.city.AddCityActivity" />
+        <activity android:name=".activity.ui.city.AddCityActivity" />
 
         <provider
                 android:name=".data.MyTravelsProvider"

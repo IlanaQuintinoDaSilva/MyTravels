@@ -30,13 +30,10 @@ class NavMainActivity : BaseActivity() {
         setContentView(R.layout.activity_nav_main)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-
-        getCountries()
+//        getCountries()
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
-/*            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()*/
             val intent = Intent(context, AddCountryActivity::class.java)
             startActivity(intent)
         }
@@ -47,7 +44,7 @@ class NavMainActivity : BaseActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_country, R.id.nav_city
+                R.id.nav_country, R.id.nav_city
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
