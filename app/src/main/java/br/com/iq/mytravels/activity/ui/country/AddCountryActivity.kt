@@ -1,4 +1,4 @@
-package br.com.iq.mytravels.activity.country
+package br.com.iq.mytravels.activity.ui.country
 
 import android.content.Intent
 

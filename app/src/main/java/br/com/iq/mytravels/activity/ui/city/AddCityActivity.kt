@@ -1,4 +1,4 @@
-package br.com.iq.mytravels.activity.city
+package br.com.iq.mytravels.activity.ui.city
 
 import android.content.Intent
 
@@ -11,12 +11,11 @@ import br.com.iq.mytravels.MyTravelsApplication
 import br.com.iq.mytravels.R
 import br.com.iq.mytravels.activity.BaseActivity
 import br.com.iq.mytravels.activity.MainActivity
+import br.com.iq.mytravels.activity.NavMainActivity
 import br.com.iq.mytravels.data.DatabaseHelper
 import br.com.iq.mytravels.domain.Country
 import br.com.iq.mytravels.domain.api.CityService
-import br.com.iq.mytravels.domain.api.CountryService
 import kotlinx.android.synthetic.main.activity_add_city.*
-import kotlinx.android.synthetic.main.activity_add_country.*
 
 class AddCityActivity : BaseActivity() {
     private var country: String = ""
@@ -65,7 +64,7 @@ class AddCityActivity : BaseActivity() {
         btAddCity.setOnClickListener{
             city = etCity.text.toString()
             addCity(city, country,"")
-            val intent = Intent(context, MainActivity::class.java)
+            val intent = Intent(context, NavMainActivity::class.java)
             startActivity(intent)
         }
     }

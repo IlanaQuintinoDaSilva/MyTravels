@@ -2,14 +2,12 @@ package br.com.iq.mytravels.activity.country
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.widget.NavigationView
-import android.support.v4.widget.DrawerLayout
 import br.com.iq.mytravels.MyTravelsApplication
 import br.com.iq.mytravels.R
 import br.com.iq.mytravels.data.DatabaseHelper
 import br.com.iq.mytravels.domain.api.CountryService
 import br.com.iq.mytravels.extensions.addFragment
-import br.com.iq.mytravels.fragment.CountryListFragment
+import br.com.iq.mytravels.activity.ui.country.CountryListFragment
 
 class CountryActivity : AppCompatActivity() {
 
@@ -23,7 +21,9 @@ class CountryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_country)
 
 
-        addFragment(R.id.container, CountryListFragment())
+        addFragment(R.id.container,
+            CountryListFragment()
+        )
     }
 
     private fun feedInitialData(){

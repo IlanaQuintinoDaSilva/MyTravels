@@ -1,10 +1,7 @@
-package br.com.iq.mytravels.fragment
+package br.com.iq.mytravels.activity.ui.country
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -12,13 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import br.com.iq.mytravels.MyTravelsApplication
 import br.com.iq.mytravels.R
-import br.com.iq.mytravels.activity.country.AddCountryActivity
 import br.com.iq.mytravels.adapter.CountryAdapter
+import br.com.iq.mytravels.data.DatabaseHelper
 import br.com.iq.mytravels.domain.Country
+import br.com.iq.mytravels.domain.api.CountryService
+import br.com.iq.mytravels.fragment.BaseFragment
 
-import br.com.iq.mytravels.fragment.dummy.DummyContent
-import br.com.iq.mytravels.fragment.dummy.DummyContent.DummyItem
-import kotlinx.android.synthetic.main.fragment_country_list.*
 import java.util.*
 
 
@@ -26,12 +22,13 @@ class CountryListFragment : BaseFragment() {
 
     private var countries: List<Country> = ArrayList()
     var rvCountry: RecyclerView? = null
+    private var countryService = CountryService()
+    private lateinit var helper: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        helper = DatabaseHelper(activity)
         getCountries()
-
     }
 
 
@@ -39,16 +36,12 @@ class CountryListFragment : BaseFragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_country_list, container, false)
 
-        /*btNewCountry.setOnClickListener {
-            val intent = Intent(context, AddCountryActivity::class.java)
-            startActivity(intent)
-        }*/
-
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         rvCountry = view?.findViewById(R.id.rvCountry)
         rvCountry?.layoutManager = LinearLayoutManager(activity)
         rvCountry?.itemAnimator = DefaultItemAnimator()
@@ -70,6 +63,8 @@ class CountryListFragment : BaseFragment() {
 
 
     private fun getCountries(){
+        MyTravelsApplication.dbHelper = helper
+        MyTravelsApplication.countries = countryService.getCountries(helper)
         countries = MyTravelsApplication.countries
     }
 

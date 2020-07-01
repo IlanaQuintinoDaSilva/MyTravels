@@ -9,16 +9,21 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity
+                android:name=".activity.NavMainActivity"
+                android:label="@string/title_activity_nav_main"
+                android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.country.AddCountryActivity"></activity>
-        <activity android:name=".activity.country.CountryActivity"></activity>
-        <activity android:name=".activity.city.AddCityActivity"></activity>
+        <activity android:name=".activity.MainActivity">
+        </activity>
+        <activity android:name=".activity.country.AddCountryActivity" />
+        <activity android:name=".activity.country.CountryActivity" />
+        <activity android:name=".activity.ui.city.AddCityActivity" />
 
         <provider
                 android:name=".data.MyTravelsProvider"
