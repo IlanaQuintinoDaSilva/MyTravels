@@ -16,5 +16,13 @@
                 android:id="@+id/nav_slideshow"
                 android:icon="@drawable/ic_menu_slideshow"
                 android:title="@string/menu_slideshow" />
+        <item
+                android:id="@+id/nav_country"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="@string/countries" />
+        <item
+                android:id="@+id/nav_city"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/cities" />
     </group>
 </menu>
