@@ -24,7 +24,6 @@ import br.com.iq.mytravels.domain.api.CountryService
 class NavMainActivity : BaseActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private var countryService = CountryService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

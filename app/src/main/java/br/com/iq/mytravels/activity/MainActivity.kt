@@ -122,8 +122,4 @@ class MainActivity : BaseActivity() {
 
     }
 
-    private fun reloadActivity(){
-        val intent = Intent(context, MainActivity::class.java)
-        startActivity(intent)
-    }
 }
