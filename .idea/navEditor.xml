@@ -8,7 +8,7 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="nav_country">
+                  <entry key="nav_city">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
@@ -20,7 +20,7 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="nav_county">
+                  <entry key="nav_country">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">

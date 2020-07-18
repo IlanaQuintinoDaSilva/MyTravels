@@ -28,7 +28,6 @@ class CityListFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         helper = DatabaseHelper(activity)
-        MyTravelsApplication.pageSelection = 1
 
     }
 

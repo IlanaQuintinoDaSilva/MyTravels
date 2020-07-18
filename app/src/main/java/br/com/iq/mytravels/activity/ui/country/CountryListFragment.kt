@@ -51,6 +51,7 @@ class CountryListFragment : BaseFragment() {
     override fun onResume(){
         super.onResume()
         setupAdapter(countries)
+        MyTravelsApplication.pageSelection = 0
     }
 
     private fun setupAdapter(list: List<Country>){
